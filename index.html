@@ -9,35 +9,37 @@
 </head>
 
 <body>
+
     <header>
         <h1 class="titulo">Encriptador de mensaje</h1>
     </header>
-    
+
     <main class="card">
-        <form>
-            <section class="mensaje-clave">
+        <section class="mensaje-clave">
+            <form>
                 <div class="campo">
                     <label for="mensaje">Mensaje secreto</label>
-                    <textarea id="mensaje" rows="4" cols="50" placeholder="Ingrese el texto" maxlength="200" minlength="1"></textarea>
+                    <textarea id="mensaje" placeholder="Ingrese el texto" maxlength="500" minlength="1"></textarea>
                 </div>
                 <div class="campo">
-                    <label for="clave">Clave</label>
-                    <input id="clave" type="number" placeholder="Ingresa tu clave secreta aquí" min="0">
+                    <label for="clave">Mensaje encriptado</label>
+                    <textarea id="mensaje2" maxlength="500" minlength="1" readonly></textarea>
                 </div>
-                <div class="campo">
-                    <label for="mostrarMensaje">Mensaje cifrado/descifrado</label>
-                    <input type="text" id="mostrarMensaje" readonly> 
-                </div>
-            </section>
-            <br />
-        </form>
-    
+            </form>
+        </section>
+
+        <label for="clave">Clave</label>
+        <div class="clave">
+            <button class="menos" onclick="subtractValue();"><span>-</span></button>
+            <input id="clave" type="number">
+            <button class="mas" onclick="addValue();"><span>+</span></button>
+        </div>
+
         <section>
-            <button id="cifrar">Cifrar</button>
-            <button id="Descifrar">Descifrar</button>
+            <button id="cifrar">cifrar</button>
+            <button id="descifrar">descifrar</button>
         </section>
     </main>
-    
     <script src="./assets/js/script.js"></script>
 </body>
 
