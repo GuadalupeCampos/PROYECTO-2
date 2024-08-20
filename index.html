@@ -13,24 +13,25 @@
     <header>
         <h1 class="titulo">Encriptador de mensaje</h1>
     </header>
+
     <main class="card">
         <section class="mensaje-clave">
             <form>
-                <div class="campo">
-                    <label for="mensaje">Mensaje secreto</label>
+                <div class="divIzquierda">
+                    <label for="mensaje">Mensaje Ingresado</label>
                     <textarea id="mensaje" placeholder="Ingrese el texto" maxlength="500" minlength="1"></textarea>
                 </div>
-                <div class="campo">
-                    <label for="clave">Mensaje encriptado</label>
+                <div class="divDerecha">
+                    <label for="clave">Resultado</label>
                     <textarea id="mensaje2" maxlength="500" minlength="1" readonly></textarea>
                 </div>
             </form>
         </section>
 
-        <label for="clave">Clave</label>
+        <label for="clave" id="clave-numeros">Clave</label>
         <div class="clave">
             <button class="menos" onclick="subtractValue();"><span>-</span></button>
-            <input id="clave" type="number">
+            <input id="clave" type="number" min="1" max="999" value="100" >
             <button class="mas" onclick="addValue();"><span>+</span></button>
         </div>
 

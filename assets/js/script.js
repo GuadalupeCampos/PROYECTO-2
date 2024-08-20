@@ -49,64 +49,89 @@ function inicio(){
         clave = (clave % 26 - 26) %26;
         return texto.replace (/[A-Z]/ig, c=> letras [(letras.indexOf(c)- clave)% 26]);
     }*/
-        window.addEventListener("load", inicio, true );
+        window.addEventListener("load", inicio, true);
 
         function inicio() {
-            document.getElementById("mensaje").addEventListener("keyup", function(){
+            document.getElementById("mensaje").addEventListener("keyup", function() {
                 this.value = this.value.toUpperCase();
-            }, true);
-            document.getElementById("cifrar").addEventListener("click", function(){
+            });
+            document.getElementById("cifrar").addEventListener("click", function() {
                 let texto = document.getElementById("mensaje").value;
-                let clave = document.getElementById("clave"). value;
-                document. getElementById("mensaje2"). value = cifrar2(texto , clave);
-            }, true);
+                let clave = document.getElementById("clave").value;
+                document.getElementById("mensaje2").value = cifrar(texto, clave);
+                document.getElementById("mensaje").value = "";
+            });
         
-            document.getElementById("descifrar").addEventListener("click", function(){
+            document.getElementById("descifrar").addEventListener("click", function() {
                 let texto = document.getElementById("mensaje").value;
-                let clave = document.getElementById("clave"). value;
-                document. getElementById("mensaje2"). value = descifrar(texto, clave);
-            }, true);
+                let clave = document.getElementById("clave").value;
+                document.getElementById("mensaje2").value = descifrar(texto, clave);
+                document.getElementById("msj-secreto").value = "";
+            });
         }
         
-        function cifrar(texto, clave){
+        function cifrar(texto, clave) {
             let resultado = "";
-            let letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            let letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ"
+            let vocales = "ÁÉÍÓÚ"
+            let numeros = "0123456789";
+            let otros = `!¡¿?()=-+`
         
-            clave = (clave % 26 + 26) % 26; 
+            const caracteres = letras + vocales + numeros + otros;
         
-            if (texto) {
-                for (let i = 0; i < texto.length; i++){
-                    if (letras.indexOf(texto[i])!=-1) {
-                        let posicion =((letras.indexOf(texto[i])+ clave)% 26);
-                        resultado += letras[posicion];
-                    } else
+            clave = (clave % caracteres.length + caracteres.length) % caracteres.length;
+            console.log(caracteres);
+            console.log(texto);
+        
+            for (let i = 0; i < texto.length; i++) {
+                if (caracteres.indexOf(texto[i]) != -1) {
+                    let posicion = ((caracteres.indexOf(texto[i]) + clave) % caracteres.length);
+                    resultado += caracteres[posicion];
+                } else {
                     resultado += texto[i];
                 }
             }
             return resultado;
         }
         
-        function cifrar2 (texto, clave){
-            if (!texto)
-                return "";
-            const letras ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            clave = (clave % 26 + 26) % 26; 
-            return texto.replace(/[A-Z]/ig, c=> letras[(letras.indexOf(c)+clave)%26]);
+        function descifrar(texto, clave) {
         
+            let resultado = "";
+            let letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ";
+            let vocales = "ÁÉÍÓÚ"
+            let numeros = "0123456789";
+            let otros = `!¡¿?()=-+`
+        
+            const caracteres = letras + vocales + numeros + otros;
+            //  Esto es por si la clave es negativa
+            //desplazamiento = (desplazamiento % 26 - 26) % 26;
+            clave = (clave % caracteres.length - caracteres.length) % caracteres.length;
+        
+            for (let i = 0; i < texto.length; i++) {
+                if (caracteres.indexOf(texto[i]) != -1) {
+                    let position = ((caracteres.indexOf(texto[i]) - clave) % caracteres.length);
+                    resultado += caracteres[position];
+                } else {
+                    resultado += texto[i];
+                }
+            }
+            return resultado;
         }
-        function descifrar (texto, clave){
-            if (!texto)
-                return "";
-            const letras ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            clave = (clave % 26 - 26) % 26; 
-            return texto.replace(/[A-Z]/ig, c=> letras[(letras.indexOf(c)-clave)%26]);
-        }
         
         
-   
-    
-
-
-
-
-
+        
+        
+        
+        
+        
+        const inputNumber = document.querySelector(".card input");
+        
+        const addValue = () => {
+            inputNumber.value = Number(inputNumber.value) + 1;
+        };
+        
+        const subtractValue = () => {
+            if (inputNumber.value > 0) {
+                inputNumber.value = Number(inputNumber.value) - 1;
+            }
+        };

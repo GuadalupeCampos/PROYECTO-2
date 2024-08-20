@@ -3,20 +3,20 @@
 body {
   text-align: center;
   font-family: "Sacramento", cursive;
-  background-image: url(/assets/img/FONDO11.png);
+  background-image: url(/assets/img/fondo.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .titulo {
-  margin: 50px auto;
+  margin: 30px auto 5px;
   font-size: 70px;
 }
 
 form label {
   display: block;
-  margin: 15px auto;
+  margin: 0px auto 15px;
   font-size: 36px;
 }
 
@@ -79,6 +79,21 @@ section button:hover {
   font-size: 25px;
   font-family: "Sacramento", cursive;
 }
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Chrome, Safari */
+  appearance: none; /* Otros navegadores modernos */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#clave-numeros {
+  font-size: 40px;
+}
 
 textarea#story {
   -moz-appearance: none;
@@ -104,4 +119,12 @@ form {
 
 form div {
   flex: 50%;
+}
+
+form .divIzquierda {
+  margin-left: 180px;
+}
+
+form .divDerecha {
+  margin-right: 180px;
 }
